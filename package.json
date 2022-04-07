@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "e2e": "npx cypress open",
+    "e2e:cli": "npx cypress run --headless",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
