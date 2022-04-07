@@ -1,9 +1,11 @@
 /// <reference types="cypress" />
 
-describe('quick title', () => {
+describe('Basic Tests', () => {
+  it('Correct Page Title', () => {
+    cy.visit('https://www.w3schools.com/')
 
-  it('test one', () => {
-    cy.visit('https://www.google.com/')
+    // add assert by adding .should
+    cy.contains('Learn to Code').should('exist')
   })
 
 })
