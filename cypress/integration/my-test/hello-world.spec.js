@@ -2,6 +2,17 @@
 
 describe('Basic Tests', () => {
 
+  // auth token
+  const token = 'part1asdada.part2dsvsdssdf.part3agfagadvbb'
+
+  // Set only once,
+  before(() => {
+    // how to set localStorage
+    cy.then(() => {
+      window.localStorage.setItem('authToken', token)
+    })
+  })
+
   // beforeEach hook
   beforeEach(() => {
     // bootstrapping external thtings
@@ -23,6 +34,7 @@ describe('Basic Tests', () => {
 
     // .should is the equivalent expect()
     cy.get('h1.learntocodeh1').should('have.text', 'Learn to Code')
+    // cy.get('h1.learntocodeh1').should('contain.text', 'Learn to Code')
     // cy.get('[data-testid=title]').should('eq', 'title')
   })
 
@@ -78,9 +90,6 @@ describe('Basic Tests', () => {
   })
 
   it('login should fail', () => {
-    // auth token
-    const token = 'part1asdada.part2dsvsdssdf.part3agfagadvbb'
-
     cy.contains('Log in').click()
 
     cy.contains('Looks like you forgot something').should('not.exist')
@@ -95,6 +104,23 @@ describe('Basic Tests', () => {
 
     cy.contains('Looks like you forgot something').should('exist')
   })
+
+  it.only('load playground', () => {
+    cy.contains('Learn to Code').should('exist')
+    // cy.contains('Learn to Code').should('not.exist')
+
+    //cypress test will pause, untill you hit resume
+    // cy.pause()
+
+    // the debugger
+    // cy.debug()
+
+    cy.get('div')
+
+    // Set timeout 1000 = 1 sec 
+    cy.contains('Not Sure Where', { timeout: 10 * 1000}).should('exist')
+  })
+
 
 
 })
