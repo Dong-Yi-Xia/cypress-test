@@ -1,11 +1,17 @@
 /// <reference types="cypress" />
 
 describe('Basic Tests', () => {
+
+  // beforeEach hook
+  beforeEach(() => {
+    // bootstrapping external thtings
+    cy.visit('https://www.w3schools.com/')
+  })
+
+
   it('Correct Page Title', () => {
     cy.viewport(1280, 720)
     // cy.viewport('macbook-15')
-
-    cy.visit('https://www.w3schools.com/')
 
     // add assert by adding .should
     cy.contains('Learn to Code').should('exist')
@@ -22,21 +28,20 @@ describe('Basic Tests', () => {
 
   it('Should exist on mobile', () => {
     cy.viewport('iphone-x')
-    cy.visit('https://www.w3schools.com/')
+
   })
 
   // use it.only to test that only test
   // it.only('Log in Page', () => {
   it('Log in Page', () => {
-    cy.visit('https://www.w3schools.com/')
     cy.contains('Log in').click()
+
     cy.contains('Need an account?').should('exist')
+
     cy.contains('Forgot password?').should('exist')
   })
 
   it('login page links works', () => {
-    cy.visit('https://www.w3schools.com/')
-
     // Go to Log in page
     cy.contains('Log in').click()
 
@@ -60,8 +65,6 @@ describe('Basic Tests', () => {
   })
 
   it('should describe cy log', () => {
-    cy.visit('https://www.w3schools.com/')
-
     // Like console.log
     cy.log('Look Im here!!')
 
@@ -74,8 +77,9 @@ describe('Basic Tests', () => {
     })
   })
 
-  it.only('login should fail', () => {
-    cy.visit('https://www.w3schools.com/')
+  it('login should fail', () => {
+    // auth token
+    const token = 'part1asdada.part2dsvsdssdf.part3agfagadvbb'
 
     cy.contains('Log in').click()
 
