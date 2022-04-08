@@ -117,8 +117,15 @@ describe('Basic Tests', () => {
 
     cy.get('div')
 
-    // Set timeout 1000 = 1 sec 
+    // Set timeout 1000 = 1 sec
     cy.contains('Not Sure Where', { timeout: 10 * 1000}).should('exist')
+
+    // Special key ctrl+c using {}
+    // cy.get().type('{ctrl}{c}')
+
+    // const fileName = Math.random().toString().slice(0,3)
+    // cy.get().type('touch newfile-${fileName}.js {enter}')
+    // cy.contains('newfile-${fileName}.js').rightclick()
   })
 
 
